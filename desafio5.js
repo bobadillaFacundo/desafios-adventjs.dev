@@ -72,19 +72,22 @@ function cyberReindeer(road, time) {
   const result = []
   let b = true
   let barrera = -1
-  const p = time
+  
+  let time2 = time 
+  if((a.length -1)>time) time2 = a.length -1
+          console.log(time2)
 
-  for (let i = 0; i < time; i++) {
-
+  for (let i = 0 ;  i < time2; i++) {
+      console.log(time2)
     if (i === 5)
-      for (let index2 = 0; index2 < time; index2++) {
+      for (let index2 = 0; index2 < a.length ; index2++) {
         if (a[index2] === '|') {
           a[index2] = '*'
           if (b) {
-            i = barrera
+            i = barrera 
             barrera = -1
             b = false
-            time = time - (i - 1)
+            time2 = time2 - (i - 1)
           }
         }
       }
@@ -92,10 +95,8 @@ function cyberReindeer(road, time) {
     if (a[i] === '|') { barrera = i }
 
     if (barrera === -1) {
-      if (a[i] === '.') { a[i] = 'S' }
 
-
-      for (let index = 0; index < p; index++) {
+      for (let index = 0; index < a.length; index++) {
         if (index === i) { c.push('S') } else { c.push(a[index]) }
       }
       result.push(c.join(''))
@@ -109,3 +110,35 @@ function cyberReindeer(road, time) {
 
   return result
 }
+
+const road1 = 'S...|...|..';
+const time1 = 8;  // Unidades de tiempo
+const result1 = cyberReindeer(road1, time1);
+console.log(result1);
+// Resultado esperado:
+
+
+const road2 = 'S.|..|...';
+const time2 = 7;  // Unidades de tiempo
+const result2 = cyberReindeer(road2, time2);
+console.log(result2);
+// Resultado esperado:
+
+const road3 = 'S.|.|.|.';
+const time3 = 12;  // Unidades de tiempo
+const result3 = cyberReindeer(road3, time3);
+console.log(result3);
+// Resultado esperado:
+
+const road4 = 'S|....|....|..';
+const time4 = 15;  // Unidades de tiempo
+const result4 = cyberReindeer(road4, time4);
+console.log(result4);
+// Resultado esperado:
+
+const road5 = 'S|..|...|...|...';
+const time5 = 20;  // Unidades de tiempo
+const result5 = cyberReindeer(road5, time5);
+console.log(result5);
+// Resultado esperado:
+
